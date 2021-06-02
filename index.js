@@ -15,7 +15,7 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 const loadData = async() => {
-    fetch("https://life-api.coronasafe.network/data/active_district_data_v2.json")
+    fetch("https://life-api.coronasafe.network/data/medicine_v2.json")
         .then(response => response.json())
         .then(data => {
             console.log(data)
