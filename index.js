@@ -14,7 +14,7 @@ function closeMenu() {
     menu.classList.remove("active");
     navMenu.classList.remove("active");
 }
-const loadData = async() => {
+const loadData1 = async() => {
     fetch("https://life-api.coronasafe.network/data/medicine_v2.json")
         .then(response => response.json())
         .then(data => {
@@ -26,9 +26,11 @@ const loadData = async() => {
             for (i = 0; i < rows.length; i++) {
                 list.innerHTML += `<li class="data"> 
                 <h2>Service:${rows[i].resource_type}</h2>
-                <p>City: ${rows[i].district} <br> Supplier: ${rows[i].title} <br>Contact: ${rows[i].phone_1}</p></li>`;
+                <p> City: ${rows[i].district} <br> Supplier: ${rows[i].title} <br>Contact: ${rows[i].phone_1}</p></li>`;
             }
         }).catch(err => console.log(err))
+}
+const loadData = async() => {
     fetch("https://script.googleusercontent.com/macros/echo?user_content_key=jwCuyRnqKkTzxKmwGM9hpjNBzcXlSEWPh0QAWUGzg_i7KcKllRO67hohzw8q70fm55Wc9erZmpex6SVfG6SOZmY_zK5L1b-mm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnIqw8kl3NxvzRFJcZAX_RY8rIdOZN2k3h25hsDJApPiy9FjRmyQY25tJ7gXzPxohspYZ9Hh4g7EoJ8PmXwPiwKygFWGgqhDKUg&lib=M7k_fMCcms0wsnPfCaVtIWw_aaQm-UuqJ")
         .then(response => response.json())
         .then(data => {
@@ -41,11 +43,12 @@ const loadData = async() => {
                 let list = document.getElementById('lists');
                 list.innerHTML += `<li class="data"> 
                 <h2>Service: ${rows[i][6]} </h2>
-                <p>Available: ${rows[i][5]} <br>City: ${rows[i][3]} <br> Supplier: ${rows[i][0]} <br>Contact: ${rows[i][1]}</p></li>`;
+                <p> City: ${rows[i][3]} <br> Supplier: ${rows[i][0]} <br>Contact: ${rows[i][1]}</p></li>`;
             }
         }).catch(err => console.log(err))
 }
 loadData();
+loadData1();
 
 function searchInlist() {
     let input, ul, li, a, i, searchValue;
