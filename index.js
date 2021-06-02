@@ -15,20 +15,20 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 const loadData = async() => {
-    // fetch("http://gsx2json.com/api?id=10fc7hCGUCVp2T9CYB9qz5x642aZPfDBd40SR2Z-e9rk")
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         let rows = data["rows"];
-    //         console.log(rows)
-    //         let list = document.getElementById('lists');
-    //         // list.style.textTransform = "UpperCase"
-    //         for (i = 0; i < rows.length; i++) {
-    //             list.innerHTML += `<li class="data"> 
-    //             <h2>Service: ${rows[i].service} </h2>
-    //             <p>Available: ${rows[i].serviceavailable} <br>City: ${rows[i].city} <br> Supplier: ${rows[i].nameofsupplier} <br>Contact: ${rows[i].contactnumber}</p></li>`;
-    //         }
-    //     })
+    fetch("https://life-api.coronasafe.network/data/medicine_v2.json")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            let rows = data["data"];
+            console.log(rows)
+            let list = document.getElementById('lists');
+            // list.style.textTransform = "UpperCase"
+            for (i = 0; i < rows.length; i++) {
+                list.innerHTML += `<li class="data"> 
+                <h2>Service:${rows[i].resource_type}</h2>
+                <p>City: ${rows[i].district} <br> Supplier: ${rows[i].title} <br>Contact: ${rows[i].phone_1}</p></li>`;
+            }
+        }).catch(err => console.log(err))
     fetch("https://script.googleusercontent.com/macros/echo?user_content_key=jwCuyRnqKkTzxKmwGM9hpjNBzcXlSEWPh0QAWUGzg_i7KcKllRO67hohzw8q70fm55Wc9erZmpex6SVfG6SOZmY_zK5L1b-mm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnIqw8kl3NxvzRFJcZAX_RY8rIdOZN2k3h25hsDJApPiy9FjRmyQY25tJ7gXzPxohspYZ9Hh4g7EoJ8PmXwPiwKygFWGgqhDKUg&lib=M7k_fMCcms0wsnPfCaVtIWw_aaQm-UuqJ")
         .then(response => response.json())
         .then(data => {
