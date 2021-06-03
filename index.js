@@ -26,11 +26,7 @@ const loadData1 = async() => {
             for (i = 0; i < rows.length; i++) {
                 list.innerHTML += `<li class="data"> 
                 <h2>Service:${rows[i].resource_type}</h2>
-<<<<<<< HEAD
                 <p>District: ${rows[i].district} <br> Supplier: ${rows[i].title} <br>Contact: ${rows[i].phone_1}</p></li>`;
-=======
-                <p> City: ${rows[i].district} <br> Supplier: ${rows[i].title} <br>Contact: ${rows[i].phone_1}</p></li>`;
->>>>>>> 07768a183e931b0065e254e0281ad811d141fc20
             }
         }).catch(err => console.log(err))
 }
