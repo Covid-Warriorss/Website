@@ -18,15 +18,18 @@ const loadData1 = async() => {
     fetch("https://life-api.coronasafe.network/data/medicine_v2.json")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             let rows = data["data"];
             console.log(rows)
             let list = document.getElementById('lists');
-            // list.style.textTransform = "UpperCase"
             for (i = 0; i < rows.length; i++) {
-                list.innerHTML += `<li class="data"> 
+                if ('resource_type' in rows[i]) {
+                    if (rows[i].resource_type != "" && rows[i].resource_type != "Select") {
+                        list.innerHTML += `<li class="data"> 
                 <h2>Service:${rows[i].resource_type}</h2>
                 <p>District: ${rows[i].district} <br> Supplier: ${rows[i].title} <br>Contact: ${rows[i].phone_1}</p></li>`;
+
+                    }
+                }
             }
         }).catch(err => console.log(err))
 }
@@ -40,10 +43,12 @@ const loadData = async() => {
 
             for (i = 1; i < rows.length; i++) {
                 console.log(rows[1][1])
-                let list = document.getElementById('lists');
-                list.innerHTML += `<li class="data"> 
+                if (rows[i][6] != "" || rows[i][3] != "" || rows[i][0] != "" || rows[i][1] != "") {
+                    let list = document.getElementById('lists');
+                    list.innerHTML += `<li class="data"> 
                 <h2>Service: ${rows[i][6]} </h2>
                 <p> City: ${rows[i][3]} <br> Supplier: ${rows[i][0]} <br>Contact: ${rows[i][1]}</p></li>`;
+                }
             }
         }).catch(err => console.log(err))
 }
